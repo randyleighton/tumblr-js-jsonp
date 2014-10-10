@@ -10,21 +10,22 @@ $(document).ready(function() {
         var p= postings[i]
         if (p.photos) {
           photoLength = p.photos.length
-          for (var z; z< photoLength; z++) {
-            console.log(z)
-            text += '<div><img class="img img-responsive img-thumbnail" src=' + p.photos[0].original_size.url +'>' +
+          console.log("photos length:" + photoLength)
+          for (var z = 0; z < photoLength; z++) {
+            console.log("photo loop at: " + z)
+            text += '<div><img class="img img-responsive img-thumbnail" src=' + p.photos[z].original_size.url +'>' +
             '<a href='+ p.post_url +'>'+ p.source_title +'</a></div>';
           }
+
         } else {
           text += '<div><a href='+ p.post_url +'>'+ p.source_title +'</a></div>';
         }
       }
 
-      // console.log(data);
-      // $(".bam").text(JSON.stringify(data));
       $(".headings").html("Blog Name: " + data.response.blog.title);
       $(".headings").append("Description: " + data.response.blog.description);
       $('.postings').append(text);
+      // $(".bam").text(JSON.stringify(data));
       }
   });
 
