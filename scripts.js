@@ -8,12 +8,13 @@ $(document).ready(function() {
       var text = ';'
       for (var i in postings) {
         var p= postings[i]
-        console.log(i + "." + p)
         if (p.photos) {
-          photo_length = p.length
-          console.log(photo_length)
-          text += '<div><img class="img img-responsive img-thumbnail" src=' + p.photos[0].original_size.url +'>' +
-          '<a href='+ p.post_url +'>'+ p.source_title +'</a></div>';
+          photoLength = p.photos.length
+          for (var z; z< photoLength; z++) {
+            console.log(z)
+            text += '<div><img class="img img-responsive img-thumbnail" src=' + p.photos[0].original_size.url +'>' +
+            '<a href='+ p.post_url +'>'+ p.source_title +'</a></div>';
+          }
         } else {
           text += '<div><a href='+ p.post_url +'>'+ p.source_title +'</a></div>';
         }
